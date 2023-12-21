@@ -8,6 +8,7 @@ type ModalType =
   | 'members'
   | 'createChannel'
   | 'leaveServer'
+  | 'deleteServer'
 
 type ModalData = {
   server?: Server
