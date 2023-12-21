@@ -5,8 +5,6 @@ import { X } from 'lucide-react'
 
 import { UploadDropzone } from '@/lib/uploadthing'
 
-import '@uploadthing/react/styles.css'
-
 type FileUploadProps = {
   onChange: (url?: string) => void
   value: string
