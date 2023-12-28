@@ -11,11 +11,16 @@ export type ModalType =
   | 'deleteServer'
   | 'editChannel'
   | 'deleteChannel'
+  | 'messageFile'
 
 type ModalData = {
   server?: Server
   channel?: Channel
   channelType?: ChannelType
+  apiUrl?: string
+  // prettier-ignore
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  query?: Record<string, any>
 }
 
 type ModalStore = {
