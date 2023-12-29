@@ -7,6 +7,7 @@ import { format } from 'date-fns'
 import { Member, Message, Profile } from '@prisma/client'
 
 import { useChatQuery } from '@/hooks/use-chat-query'
+import { useChatSocket } from '@/hooks/use-chat-socket'
 
 import { ChatWelcome } from './chat-welcome'
 import { ChatItem } from './chat-item'
@@ -42,6 +43,8 @@ export const ChatMessages = ({
   type
 }: ChatMessagesProps) => {
   const queryKey = `chat:${chatId}`
+  const addKey = `chat:${chatId}:messages`
+  const updateKey = `chat:${chatId}:messages:update`
 
   const chatRef = useRef<ElementRef<'div'>>(null)
 
@@ -50,6 +53,12 @@ export const ChatMessages = ({
     apiUrl,
     paramKey,
     paramValue
+  })
+
+  useChatSocket({
+    addKey,
+    queryKey,
+    updateKey
   })
 
   if (status === 'loading') {
