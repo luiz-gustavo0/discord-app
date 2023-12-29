@@ -1,7 +1,7 @@
-import { Server } from '@prisma/client'
+import { Channel, ChannelType, Server } from '@prisma/client'
 import { create } from 'zustand'
 
-type ModalType =
+export type ModalType =
   | 'createServer'
   | 'invite'
   | 'editServer'
@@ -9,9 +9,19 @@ type ModalType =
   | 'createChannel'
   | 'leaveServer'
   | 'deleteServer'
+  | 'editChannel'
+  | 'deleteChannel'
+  | 'messageFile'
+  | 'deleteMessage'
 
 type ModalData = {
   server?: Server
+  channel?: Channel
+  channelType?: ChannelType
+  apiUrl?: string
+  // prettier-ignore
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  query?: Record<string, any>
 }
 
 type ModalStore = {
